@@ -1,0 +1,10 @@
+{
+
+    "intents": [{
+
+        "intent": "GetEnvironmentStatus"
+    }, {
+      	"intent": "BuildWebservers"
+    }]
+
+}

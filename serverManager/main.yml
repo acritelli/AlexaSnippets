@@ -1,0 +1,38 @@
+---
+
+- hosts: all
+  remote_user: root
+  tasks:
+
+    - name: install webserver software
+      yum: pkg={{ item }} state=present
+      with_items:
+        - httpd
+
+    - name: start web services
+      service: name={{ item }} state=started
+      with_items:
+        - httpd
+
+    - name: enable web services
+      service: name={{item}} enabled=yes
+      with_items:
+          - httpd
+
+    - name: add iptables rule for HTTP
+      command: iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+      notify: save iptables rules
+
+    - name: add iptables rule for HTTPS
+      command: iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+      notify: save iptables rules
+
+    - name: add basic HTML page
+      copy: src=index.html dest=/var/www/html/
+
+  handlers:
+    - name: save iptables rules
+      command: service iptables save
+
+    - name: restart httpd
+      command: service httpd restart

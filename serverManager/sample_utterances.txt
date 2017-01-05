@@ -1,0 +1,10 @@
+BuildWebservers Build something
+BuildWebservers Build a web server
+BuildWebservers Deploy a web server
+BuildWebservers Lets build a web server
+
+GetEnvironmentStatus How is my environment doing
+GetEnvironmentStatus How are things
+GetEnvironmentStatus Is everything working
+GetEnvironmentStatus Check environment status
+GetEnvironmentStatus Check status
